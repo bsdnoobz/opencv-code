@@ -1,3 +1,6 @@
+/**
+ * Code sample for displaying image histogram in OpenCV.
+ */
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
@@ -9,11 +12,14 @@ void showHistogram(Mat& img)
 {
 	int bins = 256;             // number of bins
 	int nc = img.channels();    // number of channels
-	vector<Mat> hist(nc);
 
+	vector<Mat> hist(nc);       // histogram arrays
+
+	// Initalize histogram arrays
 	for (int i = 0; i < hist.size(); i++)
 		hist[i] = Mat::zeros(1, bins, CV_32SC1);
 
+	// Calculate the histogram of the image
 	for (int i = 0; i < img.rows; i++)
 	{
 		for (int j = 0; j < img.cols; j++)
@@ -26,6 +32,8 @@ void showHistogram(Mat& img)
 		}
 	}
 
+	// For each histogram arrays, obtain the maximum (peak) value
+	// Needed to normalize the display later
 	int hmax[3] = {0,0,0};
 	for (int i = 0; i < nc; i++)
 	{
@@ -38,6 +46,7 @@ void showHistogram(Mat& img)
 
 	vector<Mat> canvas(nc);
 
+	// Display each histogram in a canvas
 	for (int i = 0; i < nc; i++)
 	{
 		canvas[i] = Mat::ones(125, bins, CV_8UC3);
@@ -57,18 +66,15 @@ void showHistogram(Mat& img)
 	}
 }
 
+// Test the `showHistogram()` function above
 int main()
 {
 	Mat src = imread("c:/users/nash/desktop/assets/lena.jpg");
-
 	if (src.empty())
 		return -1;
-
 	showHistogram(src);
-
 	imshow("src", src);
 	waitKey(0);
-
 	return 0;
 }
 
