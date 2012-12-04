@@ -7,8 +7,8 @@ using namespace std;
 
 void showHistogram(Mat& img)
 {
-	int bins = 256;							// number of bins
-	int nc = img.channels();		// number of channels
+	int bins = 256;             // number of bins
+	int nc = img.channels();    // number of channels
 	vector<Mat> hist(nc);
 
 	for (int i = 0; i < hist.size(); i++)
