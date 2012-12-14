@@ -17,21 +17,17 @@ int main(int argc, char** argv)
 	// Invert the source image and convert to grayscale
 	cv::Mat gray;
 	cv::cvtColor(~src, gray, CV_BGR2GRAY);
-	cv::imwrite("1.jpg", gray);
 
 	// Convert to binary image by thresholding it
 	cv::threshold(gray, gray, 220, 255, cv::THRESH_BINARY);
-	cv::imwrite("2.jpg", gray);
 
 	// Find all contours
 	std::vector<std::vector<cv::Point> > contours;
 	std::vector<cv::Vec4i> hierarchy;
 	cv::findContours(gray.clone(), contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
-	cv::imwrite("3.jpg", gray);
 
 	// Fill holes in each contour
 	cv::drawContours(gray, contours, -1, CV_RGB(255,255,255), -1);
-	cv::imwrite("4.jpg", gray);
 
 	for (int i = 0; i < contours.size(); i++)
 	{
@@ -50,7 +46,6 @@ int main(int argc, char** argv)
 	}
 
 	cv::imshow("image", src);
-	cv::imwrite("5.jpg", src);
 	cv::waitKey(0);
 
 	return 0;
