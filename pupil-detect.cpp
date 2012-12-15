@@ -23,8 +23,7 @@ int main(int argc, char** argv)
 
 	// Find all contours
 	std::vector<std::vector<cv::Point> > contours;
-	std::vector<cv::Vec4i> hierarchy;
-	cv::findContours(gray.clone(), contours, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+	cv::findContours(gray.clone(), contours, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
 
 	// Fill holes in each contour
 	cv::drawContours(gray, contours, -1, CV_RGB(255,255,255), -1);
