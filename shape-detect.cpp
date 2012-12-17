@@ -6,6 +6,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <cmath>
+#include <iostream>
 
 /**
  * Helper function to find a cosine of angle between vectors
@@ -40,7 +41,8 @@ void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& cont
 
 int main()
 {
-	cv::Mat src = cv::imread("basic-shapes-2.png");
+	//cv::Mat src = cv::imread("polygon.png");
+	cv::Mat src = cv::imread("assets/basic-shapes-2.png");
 	if (src.empty())
 		return -1;
 
@@ -70,22 +72,34 @@ int main()
 			continue;
 
 		if (approx.size() == 3)
-			setLabel(dst, "TRI", contours[i]);    // Triangles
-		else if (approx.size() == 5)
-			setLabel(dst, "PENTA", contours[i]);  // Pentagons
-		else if (approx.size() == 6)
-			setLabel(dst, "HEXA", contours[i]);   // Hexagons
-		else if (approx.size() == 4)
 		{
-			// Detect and label rectangles
-			double maxcos = 0;
-			for (int j = 2; j < 5; j++)
-			{
-				double cos = std::fabs(angle(approx[j%4], approx[j-2], approx[j-1]));
-				maxcos = std::max(maxcos, cos);
-			}
-			if (maxcos < 0.3)
+			setLabel(dst, "TRI", contours[i]);    // Triangles
+		}
+		else if (approx.size() >= 4 && approx.size() <= 6)
+		{
+			// Number of vertices of polygonal curve
+			int vtc = approx.size();
+
+			// Get the cosines of all corners
+			std::vector<double> cos;
+			for (int j = 2; j < vtc+1; j++)
+				cos.push_back(angle(approx[j%vtc], approx[j-2], approx[j-1]));
+
+			// Sort ascending the cosine values
+			std::sort(cos.begin(), cos.end());
+
+			// Get the lowest and the highest cosine
+			double mincos = cos.front();
+			double maxcos = cos.back();
+
+			// Use the degrees obtained above and the number of vertices
+			// to determine the shape of the contour
+			if (vtc == 4 && mincos >= -0.1 && maxcos <= 0.3)
 				setLabel(dst, "RECT", contours[i]);
+			else if (vtc == 5 && mincos >= -0.34 && maxcos <= -0.27)
+				setLabel(dst, "PENTA", contours[i]);
+			else if (vtc == 6 && mincos >= -0.55 && maxcos <= -0.45)
+				setLabel(dst, "HEXA", contours[i]);
 		}
 		else
 		{
