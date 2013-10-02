@@ -6,6 +6,13 @@
 *.exe
 *.o
 *.so
+display-histogram
+eye-tracking
+pupil-detect
+quad-segmentation
+shape-detect
+straighten-img
+watershed
 
 # Packages #
 ############

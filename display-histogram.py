@@ -26,7 +26,7 @@ def show_histogram(im):
 		plt.show()
 
 if __name__ == '__main__':
-	im = cv2.imread("lena.jpg");
+	im = cv2.imread("assets/lena.jpg");
 	if not (im == None):
 		show_histogram(im)
 

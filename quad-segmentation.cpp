@@ -52,7 +52,7 @@ void sortCorners(std::vector<cv::Point2f>& corners,
 
 int main()
 {
-	cv::Mat src = cv::imread("image.jpg");
+	cv::Mat src = cv::imread("assets/perspective-quadrilateral.jpg");
 	if (src.empty())
 		return -1;
 
