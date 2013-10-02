@@ -10,7 +10,7 @@
 
 int main()
 {
-	cv::Mat src = cv::imread("coins.jpg");
+	cv::Mat src = cv::imread("assets/coins.jpg");
 	if (!src.data)
 		return -1;
 

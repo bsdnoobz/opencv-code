@@ -69,7 +69,7 @@ void showHistogram(Mat& img)
 // Test the `showHistogram()` function above
 int main()
 {
-	Mat src = imread("c:/users/nash/desktop/assets/lena.jpg");
+	Mat src = imread("assets/lena.jpg");
 	if (src.empty())
 		return -1;
 	showHistogram(src);

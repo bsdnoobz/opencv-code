@@ -67,7 +67,7 @@ void on_mouse(int event, int x, int y, int flags, void* param)
 
 int main()
 {
-	im0 = cv::imread("lena.png");
+	im0 = cv::imread("assets/straighten-image-src.jpg");
 	if (!im0.data)
 	{
 		std::cout << "Cannot load source image!" << std::endl;

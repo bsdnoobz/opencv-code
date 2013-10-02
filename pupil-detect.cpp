@@ -10,7 +10,7 @@
 int main(int argc, char** argv)
 {
 	// Load image
-	cv::Mat src = cv::imread("eye_image.jpg");
+	cv::Mat src = cv::imread("assets/eye_image.jpg");
 	if (src.empty())
 		return -1;
 
