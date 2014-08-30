@@ -7,6 +7,13 @@ This code sample shows the basics to display OpenCV's matrix (`cv::Mat`) within 
 
 Within the `python/` directory, you will see the same code written in Python.
 
+To compile and run the code, you need to have Qt 5 installed on your computer. The code is successfully tested on the following environment:
+
+ - Mac OS X Mavericks
+ - Qt 5.3.0
+ - OpenCV 3.0.0
+ - Python 3.4.1
+
 Compiling
 ---------
 
