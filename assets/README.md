@@ -1,4 +1,4 @@
-This directory contains the images and videos used by the OpenCV examples in this repository. All files are in public domain or licensed under Creative Commons license.
+This directory contains the images and videos used by the code samples in this repository. All files are in public domain or licensed under Creative Commons license.
 
 Credits
 -------
