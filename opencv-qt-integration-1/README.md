@@ -25,7 +25,7 @@ If everything is ok, it will produce an executable: `ImageViewer` (Linux), `Imag
 Known Issues
 ------------
 
-The code using relative path to locate the input image:
+In `ImageViewer.cpp`, the code using relative path to locate the input image:
 
     img = cv::imread("../assets/flughahn.jpg");
 
