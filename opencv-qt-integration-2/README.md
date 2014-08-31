@@ -10,7 +10,6 @@ To compile and run the code, you need to have Qt 5 installed on your computer. T
  - Mac OS X Mavericks
  - Qt 5.3.0
  - OpenCV 3.0.0
- - Python 3.4.1
 
 Compiling
 ---------
