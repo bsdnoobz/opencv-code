@@ -46,7 +46,8 @@ class ImageApp(QWidget):
         # Setup main layout
         self.main_layout = QHBoxLayout()
         self.main_layout.addWidget(self.image_label)
-        self.main_layout.addLayout(self.buttons_layout)
+        if self.original_img is not None:
+            self.main_layout.addLayout(self.buttons_layout)
         self.setLayout(self.main_layout)
         self.setWindowTitle("Image Processing with Qt and OpenCV")
 
