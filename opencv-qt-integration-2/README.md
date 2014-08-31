@@ -5,6 +5,8 @@ This code sample shows you how to do basic image manipulation to an image and di
 
 ![screenshot](http://i.imgur.com/OPCiEw8.png)
 
+The same program written in Python is available in the `python/` directory.
+
 To compile and run the code, you need to have Qt 5 installed on your computer. The code is successfully tested on the following environment:
 
  - Mac OS X Mavericks
