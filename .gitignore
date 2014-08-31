@@ -7,6 +7,7 @@
 *.o
 *.so
 *.app
+moc_*.[cpp,o]
 .qmake.stash
 Makefile
 
