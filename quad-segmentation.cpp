@@ -96,8 +96,6 @@ int main()
 		std::cout << "The object is not quadrilateral!" << std::endl;
 		return -1;
 	}
-
-	center = Point(0, 0);
 	
 	// Get mass center
 	for (int i = 0; i < corners.size(); i++)
