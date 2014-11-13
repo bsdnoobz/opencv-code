@@ -37,17 +37,20 @@ void sortCorners(std::vector<cv::Point2f>& corners,
 		else
 			bot.push_back(corners[i]);
 	}
-
-	cv::Point2f tl = top[0].x > top[1].x ? top[1] : top[0];
-	cv::Point2f tr = top[0].x > top[1].x ? top[0] : top[1];
-	cv::Point2f bl = bot[0].x > bot[1].x ? bot[1] : bot[0];
-	cv::Point2f br = bot[0].x > bot[1].x ? bot[0] : bot[1];
-
 	corners.clear();
-	corners.push_back(tl);
-	corners.push_back(tr);
-	corners.push_back(br);
-	corners.push_back(bl);
+	
+	if (top.size() == 2 && bot.size() == 2){
+		cv::Point2f tl = top[0].x > top[1].x ? top[1] : top[0];
+		cv::Point2f tr = top[0].x > top[1].x ? top[0] : top[1];
+		cv::Point2f bl = bot[0].x > bot[1].x ? bot[1] : bot[0];
+		cv::Point2f br = bot[0].x > bot[1].x ? bot[0] : bot[1];
+	
+		
+		corners.push_back(tl);
+		corners.push_back(tr);
+		corners.push_back(br);
+		corners.push_back(bl);
+	}
 }
 
 int main()
@@ -94,13 +97,18 @@ int main()
 		return -1;
 	}
 
+	center = Point(0, 0);
+	
 	// Get mass center
 	for (int i = 0; i < corners.size(); i++)
 		center += corners[i];
 	center *= (1. / corners.size());
 
 	sortCorners(corners, center);
-
+	if (corners.size() == 0){
+		std::cout << "The corners were not sorted correctly!" << std::endl;
+		return -1;
+	}
 	cv::Mat dst = src.clone();
 
 	// Draw lines
